@@ -10,41 +10,38 @@
         margin: 0;
         font-family: Arial, sans-serif;
         background: linear-gradient(135deg, #ff6a88, #ff99ac);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
         text-align: center;
-        overflow: hidden;
+        color: white;
     }
 
     .container {
-        padding: 20px;
-        color: white;
-        max-width: 400px;
+        padding: 40px 20px;
+        max-width: 500px;
+        margin: auto;
     }
 
     h1 {
-        font-size: 24px;
-        margin: 15px 0;
+        font-size: 28px;
+        margin: 20px 0;
     }
 
     p {
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 15px 0;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 20px 0;
     }
 
     .buttons {
-        margin-top: 20px;
+        margin-top: 30px;
+        position: relative;
     }
 
     button {
-        padding: 12px 25px;
-        font-size: 16px;
+        padding: 14px 30px;
+        font-size: 18px;
         border: none;
-        border-radius: 25px;
-        margin: 10px;
+        border-radius: 30px;
+        margin: 15px;
         cursor: pointer;
         transition: 0.3s;
     }
@@ -54,7 +51,7 @@
         color: white;
     }
 
-    #yesBtn:active {
+    #yesBtn:hover {
         transform: scale(1.1);
     }
 
@@ -73,6 +70,22 @@
         0% { transform: translateY(100vh); opacity:1;}
         100% { transform: translateY(-10vh); opacity:0;}
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 12px 24px;
+        }
+    }
 </style>
 </head>
 
@@ -87,6 +100,7 @@
         Your smile is my favorite notification.<br>
         Your voice is my peace.<br>
         Your love is my greatest blessing.<br><br>
+        You are not just my girlfriend…<br>
         You are my forever.
     </p>
 
@@ -101,9 +115,9 @@
 <script>
 const noBtn = document.getElementById("noBtn");
 
-// Move NO button on tap
-noBtn.addEventListener("touchstart", moveButton);
+// Move NO button on click or touch
 noBtn.addEventListener("click", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
 
 function moveButton(e) {
     e.preventDefault();
@@ -124,7 +138,7 @@ function moveButton(e) {
 // YES button
 document.getElementById("yesBtn").addEventListener("click", function() {
     document.body.innerHTML = `
-        <div style="display:flex;justify-content:center;align-items:center;height:100vh;text-align:center;color:white;padding:20px;">
+        <div style="padding:40px;text-align:center;color:white;">
             <h1>
             I love You Sanu ❤️<br><br>
             SANU SAID YESSSS ❤️💍✨<br><br>
