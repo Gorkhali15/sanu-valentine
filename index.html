@@ -8,39 +8,44 @@
 <style>
     body {
         margin: 0;
-        font-family: 'Arial', sans-serif;
-        text-align: center;
+        font-family: Arial, sans-serif;
         background: linear-gradient(135deg, #ff6a88, #ff99ac);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
         overflow: hidden;
     }
 
-    h1 {
-        margin-top: 80px;
-        font-size: 42px;
+    .container {
+        padding: 20px;
         color: white;
-        animation: fadeIn 2s ease-in-out;
+        max-width: 400px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin: 15px 0;
     }
 
     p {
-        font-size: 22px;
-        color: white;
-        margin: 20px 40px;
-        animation: fadeIn 3s ease-in-out;
-        line-height: 1.6;
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 15px 0;
     }
 
     .buttons {
-        position: relative;
-        margin-top: 50px;
+        margin-top: 20px;
     }
 
     button {
-        padding: 15px 35px;
-        font-size: 20px;
+        padding: 12px 25px;
+        font-size: 16px;
         border: none;
-        border-radius: 30px;
+        border-radius: 25px;
+        margin: 10px;
         cursor: pointer;
-        margin: 20px;
         transition: 0.3s;
     }
 
@@ -49,26 +54,18 @@
         color: white;
     }
 
-    #yesBtn:hover {
+    #yesBtn:active {
         transform: scale(1.1);
     }
 
     #noBtn {
-    background-color: white;
-    color: #ff2e63;
-    position: fixed;
-    transition: 0.2s ease;
-}
-
-
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
+        background-color: white;
+        color: #ff2e63;
+        position: absolute;
     }
 
     .heart {
         position: fixed;
-        color: red;
         animation: float 5s linear infinite;
     }
 
@@ -81,49 +78,36 @@
 
 <body>
 
-<h1>My Beautiful Sanu ❤️</h1>
+<div class="container">
+    <h1>My Beautiful Sanu ❤️</h1>
 
-<p>
-Sanu, from the moment you walked into my life,  
-everything became brighter.  
-Your smile is my favorite notification.  
-Your voice is my peace.  
-Your love is my greatest blessing.  
+    <p>
+        Sanu, from the moment you walked into my life,<br>
+        everything became brighter.<br>
+        Your smile is my favorite notification.<br>
+        Your voice is my peace.<br>
+        Your love is my greatest blessing.<br><br>
+        You are my forever.
+    </p>
 
-You are not just my girlfriend…  
-You are my forever.
-</p>
+    <h1>Will You Be My Valentine? 💍</h1>
 
-<h1>Sanu, Will You Be My Valentine? 💍</h1>
-
-<div class="buttons">
-    <button id="yesBtn">YES ❤️</button>
-    <button id="noBtn">NO 😢</button>
+    <div class="buttons">
+        <button id="yesBtn">YES ❤️</button>
+        <button id="noBtn">NO 😢</button>
+    </div>
 </div>
 
 <script>
 const noBtn = document.getElementById("noBtn");
 
-// Run away when mouse gets close
-document.addEventListener("mousemove", function(e) {
-    const rect = noBtn.getBoundingClientRect();
-    const distance = Math.hypot(
-        e.clientX - (rect.left + rect.width / 2),
-        e.clientY - (rect.top + rect.height / 2)
-    );
+// Move NO button on tap
+noBtn.addEventListener("touchstart", moveButton);
+noBtn.addEventListener("click", moveButton);
 
-    if (distance < 120) {
-        moveButton();
-    }
-});
+function moveButton(e) {
+    e.preventDefault();
 
-// Escape if somehow clicked
-noBtn.addEventListener("click", function(event) {
-    event.preventDefault();
-    moveButton();
-});
-
-function moveButton() {
     const buttonWidth = noBtn.offsetWidth;
     const buttonHeight = noBtn.offsetHeight;
 
@@ -137,16 +121,16 @@ function moveButton() {
     noBtn.style.top = y + "px";
 }
 
-
-
 // YES button
 document.getElementById("yesBtn").addEventListener("click", function() {
     document.body.innerHTML = `
-        <h1 style="color:white;margin-top:200px;">
-        I love You Sanu ❤️
-        SANU SAID YESSSS ❤️💍✨<br><br>
-        Tmro Sanaa is now the happiest man alive 😭❤️
-        </h1>
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;text-align:center;color:white;padding:20px;">
+            <h1>
+            I love You Sanu ❤️<br><br>
+            SANU SAID YESSSS ❤️💍✨<br><br>
+            Tmro Sanaa is now the happiest man alive 😭❤️
+            </h1>
+        </div>
     `;
     startHearts();
 });
@@ -163,7 +147,7 @@ function startHearts() {
         setTimeout(() => {
             heart.remove();
         }, 5000);
-    }, 250);
+    }, 300);
 }
 </script>
 
